@@ -1,10 +1,14 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"github.com/google/uuid"
+)
 
 type Courier struct {
 	ID			uint		`gorm:"primaryKey"`
-	UUID		string		`gorm:"type:uuid;default:uuid_generate_v4();uniqueIndex"`
+	UUID		uuid.UUID		`gorm:"type:uuid;default:uuid_generate_v4();uniqueIndex"`
 	FirstName	string		`gorm:"size:100;not null"`
 	LastName	string		`gorm:"size:100;not null"`
 	Email		string		`gorm:"size:100;not null;unique"`
@@ -14,3 +18,5 @@ type Courier struct {
 	CreatedAt	time.Time	`gorm:"autoCreateTime"`
 	UpdatedAt	time.Time	`gorm:"autoUpdateTime"`
 }
+
+
